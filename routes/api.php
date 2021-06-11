@@ -9,5 +9,7 @@ Route::group(['prefix' => '/v1', 'as' => 'api.'], function () {
         Route::post('refresh', 'AuthController@refresh')->name('api.refresh');
         Route::post('me', 'AuthController@me')->name('api.me');
     });
+
+    Route::apiResource('departments', DepartmentController::class)->only(['index', 'show']);
 });
 
