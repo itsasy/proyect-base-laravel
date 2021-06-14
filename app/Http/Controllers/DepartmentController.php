@@ -15,9 +15,9 @@ class DepartmentController extends Controller
         ], 200);
     }
 
-    public function show($department)
+    public function show(Department $department)
     {
-        $department = Department::with('provinces.districts')->findOrFail($department);
+        $department->load('provinces.districts');
 
         return response()->json([
             'departments' => $department
